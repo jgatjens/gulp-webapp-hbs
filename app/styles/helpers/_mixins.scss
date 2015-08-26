@@ -1,0 +1,58 @@
+//
+// Mixins
+// --------------------------------------------------
+
+// core/_fonts.scss
+@mixin fontNameLight() {
+  // font-family: 'NameLight'; // Light
+}
+@mixin fontCondNameLight() {
+  // font-family: 'NameCondLight'; // Cond Light
+}
+@mixin fontNameRegular() {
+  // font-family: 'Name'; // Regular
+}
+@mixin fontNameMedium() {
+  // font-family: 'NameMedium'; // Medium
+}
+@mixin fontNameBold() {
+  // font-family: 'NameBold'; // Bold
+}
+@mixin fontNameBlack() {
+  // font-family: 'NameBlack'; // Black
+}
+
+@mixin breakpoint($points) {
+  @each $point in $points {
+    @if $point == large {
+      @media (min-width: $screen-lg-min) { @content; }
+    }
+    @else if $point == desktop {
+      @media (min-width: $screen-md-min) and (max-width: $screen-lg-min) { @content; }
+    }
+    @else if $point == tablet {
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { @content; }
+    }
+    @else if $point == phone {
+      @media (max-width: $screen-xs-max)  { @content; }
+    }
+  }
+}
+
+@mixin retinabg($img, $width: 0, $height: 0) {
+  @media (-webkit-min-device-pixel-ratio: 1.5),
+  (min--moz-device-pixel-ratio: 1.5),
+  (-o-min-device-pixel-ratio: 3/2),
+  (min-device-pixel-ratio: 1.5),
+  (min-resolution: 144dpi) {
+    background-image: $img;
+    @if $width != 0 {
+      background-size: $width $height;
+    }
+    @if $width == 0 {
+      background-size: contain;
+    }
+  }
+}
+
+

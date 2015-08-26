@@ -1,0 +1,23 @@
+{
+  "name": "new-thehangar-cr",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap-sass": "~3.3.5",
+    "modernizr": "~2.8.1",
+    "susy": "~2.2.5"
+  },
+  "overrides": {
+    "bootstrap-sass": {
+      "main": [
+        "assets/stylesheets/_bootstrap.scss",
+        "assets/javascripts/bootstrap/transition.js",
+        "assets/javascripts/bootstrap/modal.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "chai": "~3.2.0",
+    "mocha": "~2.2.5"
+  }
+}
