@@ -1,0 +1,28 @@
+
+// Display content as table
+.#{$prefix}-h-table {
+  width: 100%;
+  display: table;
+  text-align: center;
+
+  > .h-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .h-is-top {
+    vertical-align: top;
+    padding-top: 50px;
+  }
+
+  .h-is-bottom {
+    vertical-align: bottom;
+    padding-bottom: 40px;
+  }
+
+}
+// Bootstrap remove gutter
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}

@@ -1,0 +1,12 @@
+// Variables
+$footer-color: #444444;
+$footer-bg: #000;
+
+.#{$prefix}-m-footer {
+  padding-top: 70px;
+  background-color: $footer-bg;
+  padding-bottom: 70px;
+
+  // Mobile
+  @include breakpoint('phone') { }
+}
