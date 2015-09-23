@@ -60,7 +60,7 @@ gulp.task('html', ['styles'], () => {
 gulp.task('hbs', () => {
 
   var options = {
-    batch : ['./app/_partials'],
+    batch : ['./app/_partials', './app/_pages'],
     helpers : {
       capitals : (str) => {
         return str.toUpperCase();
