@@ -68,9 +68,9 @@ gulp.task('hbs', () => {
     }
   }
 
-  return gulp.src('app/_pages/index.hbs')
+  return gulp.src(['app/_pages/*.hbs', ])
     .pipe($.compileHandlebars({}, options))
-    .pipe($.rename('index.html'))
+    .pipe($.rename({ extname: '.html' }))
     .pipe(gulp.dest('./app'));
 });
 
@@ -176,6 +176,7 @@ gulp.task('serve', ['svg', 'hbs', 'styles', 'fonts'], () => {
   gulp.watch('app/**/*.hbs', ['hbs']);
   gulp.watch('app/images/svg/*.svg', ['svg']);
   gulp.watch('app/styles/**/*.scss', ['styles']);
+  gulp.watch('app/scripts/es6/**/*.js', ['es6']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts', 'hbs']);
 });
