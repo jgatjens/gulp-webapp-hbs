@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hangar - Digital Expertise</title>
+    <title>Project Name</title>
     <meta name="description" content="description">
     <meta name="keywords" content="jgatjens, webapp, templates, es6">
-    <meta name="author" content="Hangar">
+    <meta name="author" content="project name">
 
     <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
     <link rel="icon" type="image/vnd.microsoft.icon" href="img/favicon.ico" />
@@ -26,10 +26,13 @@
     <!-- endbuild -->
   </head>
   <body>
-
-     <!--[if lt IE 10]>
+    <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div style="height: 0; width: 0; position: absolute; top: 0; visibility: hidden;">
+    <!-- inject:svg -->
+    <!-- endinject -->
+    </div>
 
     <div class="container">
       <h1>'Allo, 'Allo!</h1>
@@ -41,11 +44,18 @@
         <li>Bootstrap</li>
         <li>Modernizr</li>
         <li>ES6</li>
+        <li>Inject SVG sprites</li>
         <li>Custome css structure</li>
       </ul>
-    </div>
 
-    </div><!-- /.container -->
+      <div class="col-md-12 text-left">
+        <p>Share</p>
+        <a id="js-social-fb" class="svg-icon" href="#"><svg id="fb-svg"><use xlink:href="#social_fb"></use></svg></a>
+        <a id="js-social-tw" class="svg-icon" href="#"><svg id="tw-svg"><use xlink:href="#social_tw"></use></svg></a>
+        <a id="js-social-go" class="svg-icon" href="#"><svg id="google-svg"><use xlink:href="#social_google"></use></svg></a>
+      </div>
+
+    </div>
 
     {{> scripts }}
 

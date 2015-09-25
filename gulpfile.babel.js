@@ -68,9 +68,9 @@ gulp.task('hbs', () => {
     }
   }
 
-  return gulp.src('app/_pages/index.hbs')
+  return gulp.src(['app/_pages/*.hbs', ])
     .pipe($.compileHandlebars({}, options))
-    .pipe($.rename('index.html'))
+    .pipe($.rename({ extname: '.html' }))
     .pipe(gulp.dest('./app'));
 });
 
@@ -99,6 +99,24 @@ gulp.task('es6', () => {
     .on('error', standardHandler)
     .pipe(source('main.js'))
     .pipe(gulp.dest('./app/scripts/'));
+});
+
+
+// Combine svg files and inject it into index.html
+gulp.task('svg', () => {
+    var svgs = gulp
+        .src('./app/images/svg/*.svg')
+        .pipe($.svgmin())
+        .pipe($.svgstore({ inlineSvg: true }));
+
+    function fileContents (filePath, file) {
+        return file.contents.toString();
+    }
+
+    return gulp
+        .src('app/_pages/index.hbs')
+        .pipe($.inject(svgs, { transform: fileContents }))
+        .pipe(gulp.dest('app/_pages/'));
 });
 
 gulp.task('images', () => {
@@ -136,7 +154,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'fonts'], () => {
+gulp.task('serve', ['svg', 'hbs', 'styles', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -156,7 +174,9 @@ gulp.task('serve', ['styles', 'fonts'], () => {
   ]).on('change', reload);
 
   gulp.watch('app/**/*.hbs', ['hbs']);
+  gulp.watch('app/images/svg/*.svg', ['svg']);
   gulp.watch('app/styles/**/*.scss', ['styles']);
+  gulp.watch('app/scripts/es6/**/*.js', ['es6']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts', 'hbs']);
 });
@@ -204,7 +224,7 @@ gulp.task('wiredep', () => {
 });
 
 // gulp.task('build', ['lint', 'hbs', 'html', 'images', 'fonts', 'extras'], () => {
-gulp.task('build', ['hbs', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['svg', 'hbs', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

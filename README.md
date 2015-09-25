@@ -1,6 +1,12 @@
 Gulp-webapp + hbs and ES6
 =======================
 
+## Features
+- All generator-gulp-webapp features
+- ES6
+- Handlebars
+- Inject Svg sprites
+
 ## Dependecies
 - Node (> 0.12.0)
 
@@ -13,3 +19,4 @@ Gulp-webapp + hbs and ES6
 - Run `gulp` to build your webapp for production
 - Run `gulp serve:dist` to preview the production build
 
+  

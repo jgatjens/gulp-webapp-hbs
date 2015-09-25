@@ -28,3 +28,11 @@ $icon-font-path: '../fonts/';
 @import "modules/footer";
 
 // Pages
+.svg-icon svg{
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  &:hover {
+    fill: red;
+  }
+}
