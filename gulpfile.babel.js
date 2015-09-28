@@ -102,7 +102,7 @@ gulp.task('es6', () => {
 });
 
 
-// Combine svg files and inject it into index.html
+// Combine svg files and inject it into pages
 gulp.task('svg', () => {
     var svgs = gulp
         .src('./app/images/svg/*.svg')
@@ -114,7 +114,7 @@ gulp.task('svg', () => {
     }
 
     return gulp
-        .src('app/_pages/index.hbs')
+        .src('app/_pages/*.hbs')
         .pipe($.inject(svgs, { transform: fileContents }))
         .pipe(gulp.dest('app/_pages/'));
 });
