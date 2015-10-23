@@ -44,7 +44,7 @@ const testLintOptions = {
 gulp.task('lint', lint('app/scripts/**/*.js'));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
-gulp.task('html', ['styles'], () => {
+gulp.task('html', ['styles', 'hbs'], () => {
   const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
   return gulp.src('app/*.html')
@@ -224,7 +224,7 @@ gulp.task('wiredep', () => {
 });
 
 // gulp.task('build', ['lint', 'hbs', 'html', 'images', 'fonts', 'extras'], () => {
-gulp.task('build', ['svg', 'hbs', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['svg', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
